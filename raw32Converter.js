@@ -70,10 +70,7 @@ if (args.bArgVideo){
 	if (!args.bArgOutput){
 		ERROR('Не указан обязательный аргумент "--output"');
 	}
-	(function(a_video, a_output){
-		// https://batchloaf.wordpress.com/2017/02/10/a-simple-way-to-read-and-write-audio-and-video-files-in-c-using-ffmpeg/
-		// https://batchloaf.wordpress.com/2017/02/12/a-simple-way-to-read-and-write-audio-and-video-files-in-c-using-ffmpeg-part-2-video/
-	})(args.video, args.output);
+	require('./videoToRaw.js')(args.video, args.output);
 }
 else {
 	ERROR('Не указан режим. Необходимо указать параметр "--video"');
