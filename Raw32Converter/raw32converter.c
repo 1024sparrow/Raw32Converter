@@ -16,9 +16,14 @@ int raw32converter(struct raw32converter_parameters *a_parameters)
 //	return 0;
 
 	AVFormatContext *pFormatContext = avformat_alloc_context();
-	//avformat_open_input(&pFormatContext, a_parameters.video, nullptr, nullptr);
 	avformat_open_input(&pFormatContext, a_parameters->video, 0, 0);
 	printf("Format %s, duration %lld us\n", pFormatContext->iformat->long_name, pFormatContext->duration);
+
+	avformat_find_stream_info(pFormatContext, 0);
+	for (int i = 0 ; i < pFormatContext->nb_streams ; ++i)
+	{
+		//
+	}
 
 	return 0;
 }

@@ -1,6 +1,8 @@
 #pragma once
 
-// "sudo apt install libavformat-dev" - lkjhlkjh lkjh
+// https://habr.com/ru/company/edison/blog/495614/
+// Собиралось в Ubuntu-20.04 LTS. Там для сборки необходимо было доставить следующие пакеты:
+// sudo apt install libavformat-dev
 // sudo apt install libavfilter-dev
 // sudo apt install libavdevice-dev
 

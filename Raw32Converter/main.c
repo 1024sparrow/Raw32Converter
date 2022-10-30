@@ -1,4 +1,3 @@
-//#include <QCoreApplication>
 #include <string.h>
 #include <stdio.h>
 
