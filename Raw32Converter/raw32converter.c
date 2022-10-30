@@ -10,15 +10,15 @@
 
 #include <stdio.h>
 
-int raw32converter(struct raw32converter_parameters &a_parameters)
+int raw32converter(struct raw32converter_parameters *a_parameters)
 {
 //	puts("not implemented");
 //	return 0;
 
 	AVFormatContext *pFormatContext = avformat_alloc_context();
 	//avformat_open_input(&pFormatContext, a_parameters.video, nullptr, nullptr);
-	avformat_open_input(&pFormatContext, "a_parameters.video", nullptr, nullptr);
-//	printf("Format %s, duration %lld us", pFormatContext->iformat->long_name, pFormatContext->duration);
+	avformat_open_input(&pFormatContext, a_parameters->video, 0, 0);
+	printf("Format %s, duration %lld us\n", pFormatContext->iformat->long_name, pFormatContext->duration);
 
 	return 0;
 }

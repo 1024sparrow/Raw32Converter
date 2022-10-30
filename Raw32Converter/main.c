@@ -11,17 +11,17 @@ int main(int argc, char **argv)
 		char *arg = argv[iArg];
 		if (!strcmp(arg, "--help"))
 		{
-			puts(R"(
-Программа Raw32Converter - конвертер видеофайлов в raw32-формат
+//			puts(R"(
+//Программа Raw32Converter - конвертер видеофайлов в raw32-формат
 
-Raw32Converter --video <путь_до_видеофайла> --output <в_какой_файл_записать_raw32>
-)");
+//Raw32Converter --video <путь_до_видеофайла> --output <в_какой_файл_записать_raw32>
+//)");
 			return 0;
 		}
 	}
-	bool
-		bArgVideo = false,
-		bArgOutput = false
+	int
+		bArgVideo = 0,
+		bArgOutput = 0
 	;
 	enum
 	{
@@ -29,7 +29,7 @@ Raw32Converter --video <путь_до_видеофайла> --output <в_как�
 		stateVideo,
 		stateOutput,
 		stateReady
-	} state {stateInitial};
+	} state = stateInitial;
 
 	struct raw32converter_parameters parameters;
 	for (int iArg = 1 ; iArg < argc ; ++iArg)
@@ -44,7 +44,7 @@ Raw32Converter --video <путь_до_видеофайла> --output <в_как�
 					puts("пресечена попытка повторной установки значения аргумента \"--video\"");
 					return 1;
 				}
-				bArgVideo = true;
+				bArgVideo = 1;
 				state = stateVideo;
 			}
 			else if (!strcmp(arg, "--output"))
@@ -54,7 +54,7 @@ Raw32Converter --video <путь_до_видеофайла> --output <в_как�
 					puts("пресечена попытка повторной установки значения аргумента \"--output\"");
 					return 1;
 				}
-				bArgOutput = true;
+				bArgOutput = 1;
 				state = stateOutput;
 			}
 			else if (!strncmp(arg, "-", 1))
@@ -143,7 +143,7 @@ Raw32Converter --video <путь_до_видеофайла> --output <в_как�
 	// Проверка полноты задания аргументов уже произведена.
 	if (bArgVideo)
 	{
-			if (raw32converter(parameters))
+			if (raw32converter(&parameters))
 			{
 				return 1;
 			}
