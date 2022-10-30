@@ -17,8 +17,13 @@ add_executable(Raw32Converter
 	${SOURCES}
 #	${RCC_SOURCES}
 )
-#target_link_libraries(Raw32Converter Qt5::Core
+target_link_libraries(Raw32Converter
+	avcodec avformat avfilter avdevice swresample swscale avutil
+
+	#avformat
+
+#	Qt5::Core
 #	Qt5::Widgets
 #	#$<$<PLATFORM_ID:Linux>:pthread>
-#)
+)
 
