@@ -11,11 +11,11 @@ int main(int argc, char **argv)
 		char *arg = argv[iArg];
 		if (!strcmp(arg, "--help"))
 		{
-//			puts(R"(
-//Программа Raw32Converter - конвертер видеофайлов в raw32-формат
+			puts(R"(
+Программа Raw32Converter - конвертер видеофайлов в raw32-формат
 
-//Raw32Converter --video <путь_до_видеофайла> --output <в_какой_файл_записать_raw32>
-//)");
+Raw32Converter --video <путь_до_видеофайла> --output <в_какой_файл_записать_raw32>
+)");
 			return 0;
 		}
 	}
@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 	} state = stateInitial;
 
 	struct raw32converter_parameters parameters;
+	memset(&parameters, 0, sizeof(parameters));
 	for (int iArg = 1 ; iArg < argc ; ++iArg)
 	{
 		char *arg = argv[iArg];
